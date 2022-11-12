@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" fxLayout="row">
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item routerLink="/home">Home</button>
+    <button mat-menu-item routerLink="/authentication/register">Registre-se</button>
+    <button mat-menu-item routerLink="/authentication/login">Login</button>
+    <button mat-menu-item routerLink="">Fale com a gente</button>
+    <button mat-menu-item routerLink="/about">Quem Somos</button>
+    <button mat-menu-item routerLink="/vendas/orcamento">**Orcamento</button>
+    <button mat-menu-item routerLink="">Visite nosso site</button>
+  </mat-menu>
+  <button fxFlex="10%" mat-icon-button [matMenuTriggerFor]="appMenu">
+  <mat-icon>more_vert</mat-icon>
+  </button>
+  <p fxFlex="12%"></p>
+  <p matLine fxFlex fxFlexAlign="center">Faça Parte Desse Grupo!</p>
+</mat-toolbar>

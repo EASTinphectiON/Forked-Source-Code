@@ -1,0 +1,40 @@
+  <div class="home" fxLayout="column" fxLayoutAlign="end">
+    <div fxFlex fxLayout="row" fxLayoutAlign="end;center">
+      <span fxFlex></span>
+      <img id="logo" src="https://www.isure.com.br/wp-content/uploads/2017/05/logo-isure.png" alt="logo da ISure" fxFlex="35%" fxAlign="end">
+    </div>
+  <form fxFlex="90%" fxLayout="column" fxLayoutGap="1vh" #loginForm="ngForm" >
+      <div fxFlex="60%"></div>
+      <mat-form-field  fxFlex>
+      <input matInput type="email" placeholder="E-Mail" name="email" [(ngModel)]="loginUser.email" required #email="ngModel">
+      <mat-error *ngIf="email.touched && email.invalid">
+          A valid email is required.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="password" fxFlex fxLayout="row" [fxHide]="loggedUser">
+      <mat-form-field fxFlex="90%" fxAlign="end">
+        <input matInput 
+        [type]="hidePassword ? 'password' : 'text'" required placeholder="Password" name="password"
+        [(ngModel)]="loginUser.password" #password="ngModel"  minlength="6" maxlength="8" >
+      </mat-form-field>
+      <button fxFlex flxAlign="end" mat-icon-button color="accent"  (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon></button>
+    </div>
+    <mat-divider></mat-divider>
+    <a fxFlex fxAlign="center" mat-button color="accent" href="" routerLink="/authentication/register">Ainda não tem cadastro? Acesse Aqui</a>
+    <button fxFlex flxAlign="end" mat-raised-button [disabled]="!loginForm.valid" [fxHide]="loggedUser"  (click)="login()" [attr.aria-label]="'Entrar'"><mat-icon></mat-icon> Login </button>
+    <a mat-button color="accent" fxFlex matLine>Ou:</a>
+    <button color="primary" fxFlex flxAlign="end" [fxHide]="loggedUser" mat-raised-button (click)="googleLogin()" [attr.aria-label]="'Google Login'">
+      <mat-icon>account_box</mat-icon> Login via Google
+    </button>
+    <button color="accent" fxFlex flxAlign="end" [fxHide]="!loggedUser"  mat-raised-button (click)="logout()" [attr.aria-label]="'Logout'">
+      <mat-icon>account_box</mat-icon> Logout
+    </button>
+    <button fxFlex flxAlign="end" [fxHide]="loggedUser"  mat-raised-button (click)="logout()" [attr.aria-label]="'Logout'">
+      <mat-icon>lock</mat-icon> Esqueci minha senha
+    </button>
+  </form>
+  </div>
+ 
+

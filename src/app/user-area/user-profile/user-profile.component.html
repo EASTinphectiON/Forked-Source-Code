@@ -1,0 +1,43 @@
+<p>
+  user area works!
+  {{userData?.email}}
+</p>
+<mat-card>
+  <mat-card-title>
+    <p matLine><img mat-card-avatar></p>
+  </mat-card-title>
+<mat-card-content fxLayout="column">
+  <form fxFlex fxLayout="column" #userProfileForm="ngForm">
+    <mat-form-field >
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" placeholder="ex. Jorge da Silva" name="nome" [(ngModel)]="userData.name" required #nome="ngModel">
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <input matInput type="email" placeholder="E-Mail" name="email" [(ngModel)]="userData.email" required #email="ngModel">
+      <mat-error *ngIf="email.touched && email.invalid">
+          A valid email is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>celular</mat-label>
+      <input matInput type="tel" placeholder="11 99999-9999" name="mobile" [(ngModel)]="userData.mobile" required #mobile="ngModel">
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>tel.</mat-label>
+      <input matInput type="tel" placeholder="11 4567-8901" name="tel" [(ngModel)]="userData.tel" required #tel="ngModel">
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <mat-label>Mini Bio</mat-label>
+      <textarea rows="10" col="100" matInput type="text" name="bio" [(ngModel)]="userData.bio">
+        Diga algo sobre você:
+      </textarea>
+    </mat-form-field>
+  </form>
+</mat-card-content>
+<mat-card-actions>
+  <button mat-raised-button color="accent"><mat-icon>photo_amera</mat-icon>Alterar Foto</button>
+  <button mat-raised-button (click)="save()"><mat-icon>save</mat-icon>Salvar</button>
+</mat-card-actions>
+</mat-card>
+
+<app-photo-upload></app-photo-upload>
